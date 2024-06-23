@@ -71,9 +71,10 @@ const RegistrationForm2 = () => {
             <input
               type="text"
               id="fullName"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              onChange={(e) => setFullName(e.target.value.replace(/[^a-zA-Z]/g, ''))}
               required
+              pattern="[a-zA-Z]+" //only to alphabets
+              value={fullName}
             />
 
             <label htmlFor="email">Email:</label>
@@ -90,6 +91,7 @@ const RegistrationForm2 = () => {
               type="tel"
               id="phoneNumber"
               value={phoneNumber}
+              title="Please enter only digits !!"
               onChange={(e) => setPhoneNumber(e.target.value)}
               required
               pattern="\d*" // Restrict to digits only
